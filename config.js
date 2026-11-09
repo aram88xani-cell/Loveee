@@ -1,38 +1,7 @@
-const CONFIG = {
-    // 1. واجهة السؤال الأولى (Yes / No)
-    questionStep: {
-        title: "Will you be my  Princess?", // أو أي سؤال تحبه
-        yesText: "Yes ❤️",
-        noText: "No 💔"
-    },
-
-    // 2. النص الأول بعد الموافقة (قبل إطلاق السهم)
-    step1: {
-        subtitle: "For my little Princess Name",
-        title: "Aim On My Heart"
-    },
-
-    // 3. النص الثاني (عند إصابة القلب)
-    step2: {
-        subtitle: " Name ...",
-        title: " 𝓘 𝓛𝓸𝓿𝓮 𝓨𝓸𝓾",
-        titleColor: "#ff4081"
-    },
-
-    // 4. النص الثالث (أثناء نمو الشجرة)
-    step3: {
-        subtitle: "It's Just Done",
-        title: "The tree of our love"
-    },
-
-    // 5. النص النهائي (عند ظهور الصورة)
-    step4: {
-        subtitle: "𝒾 𝑓𝑎𝓁𝓁 𝒾𝓃 𝓁𝑜𝓋𝑒 𝓌𝒾𝓉𝒽 𝓎𝑜𝓊"
-    },
-
-    // 6. نص التلميح الأسفل
-    hintText: "Just Do It",
-
-    // 7. مسار الصورة في النهاية
-    imagePath: "love.jpg"
-};
+const btn=document.getElementById('surpriseBtn');
+const letter=document.getElementById('letter');
+const input=document.getElementById('photoInput');
+const photo=document.getElementById('memoryPhoto');
+btn.addEventListener('click',()=>{letter.classList.toggle('hidden');btn.textContent=letter.classList.contains('hidden')?'🎁Diyarîya te ye':'💗Hevala Dilê min';if(!letter.classList.contains('hidden')){confetti();letter.scrollIntoView({behavior:'smooth',block:'center'});}});
+input.addEventListener('change',e=>{const file=e.target.files[0];if(file)photo.src=URL.createObjectURL(file);});
+function confetti(){for(let i=0;i<35;i++){const s=document.createElement('span');s.textContent=['💗','✨','🌸','🎉','💖'][Math.floor(Math.random()*5)];s.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;font-size:${16+Math.random()*18}px;z-index:10;pointer-events:none;animation:fall ${2+Math.random()*2}s linear forwards`;document.body.appendChild(s);setTimeout(()=>s.remove(),4500);}}
